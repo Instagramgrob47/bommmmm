@@ -41,6 +41,21 @@
             font-size: 1.2em;
             color: yellow;
         }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #f00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #c00;
+        }
     </style>
 </head>
 <body>
@@ -51,17 +66,19 @@
         <p class="alert-message">يرجى الابتعاد عن الهاتف فوراً!</p>
         <p>الهاتف سينفجر في غضون:</p>
         <div id="timer">40</div>
+        <!-- إضافة زر لتشغيل الصوت -->
+        <button onclick="playSound()">تشغيل الصوت</button>
     </div>
 
     <!-- إضافة صوت صفارة إنذار -->
-    <audio id="alarmSound" src="https://drive.google.com/uc?export=download&id=1LP0kzK-ibrS6WDKKAiQmIMboJJjeMH-j" preload="auto"></audio>
+    <audio id="alarmSound" src="https://www.soundjay.com/button/sounds/air-horn-01.mp3" preload="auto"></audio>
 
     <script>
-        // تشغيل صوت الإنذار عند تحميل الصفحة
-        window.onload = function() {
+        // تشغيل صوت الإنذار عند النقر على الزر
+        function playSound() {
             const alarmSound = document.getElementById('alarmSound');
             alarmSound.play();
-        };
+        }
 
         let countdown = 40;
 
