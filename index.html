@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحذير: ارتفاع درجة حرارة البطارية!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .warning-box {
+            background-color: red;
+            border: 2px solid darkred;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: yellow;
+        }
+
+        #timer {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        #alert {
+            color: yellow;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .alert-message {
+            font-size: 1.2em;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning-box">
+        <h1>⚠️ تحذير خطير ⚠️</h1>
+        <p id="alert">ارتفاع درجة حرارة البطارية!</p>
+        <p>البطارية وصلت إلى درجة حرارة خطيرة.</p>
+        <p class="alert-message">يرجى الابتعاد عن الهاتف فوراً!</p>
+        <p>الهاتف سينفجر في غضون:</p>
+        <div id="timer">10</div>
+    </div>
+
+    <!-- إضافة صوت صفارة إنذار -->
+    <audio id="alarmSound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+
+    <script>
+        // تشغيل صوت الإنذار عند تحميل الصفحة
+        window.onload = function() {
+            const alarmSound = document.getElementById('alarmSound');
+            alarmSound.play();
+        };
+
+        let countdown = 10;
+
+        const timerElement = document.getElementById('timer');
+        const alertElement = document.getElementById('alert');
+
+        const interval = setInterval(() => {
+            countdown--;
+            timerElement.innerHTML = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(interval);
+                alertElement.innerHTML = "تم الانفجار 💥";
+                alertElement.style.color = "white";
+                timerElement.innerHTML = "💥";
+                document.body.style.backgroundColor = "black";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
